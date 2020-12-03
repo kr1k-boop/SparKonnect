@@ -36,8 +36,8 @@ const PostItem = ({ deletePost, addLike, removeLike,Requests,removeRequest, auth
             </button>
 <button onClick= {e => Requests(_id)} type="button" class="btn btn-light">
               <i class="fa fa-hand-o-right"/>{' '}
-            <span>{likes.length > 0 && (
-                  <span> {likes.length} </span>
+            <span>{requests.length > 0 && (
+                  <span> {requests.length} </span>
               )} </span>
             </button>
             <button onClick= {e => removeRequest(_id)} type="button" class="btn btn-light">
