@@ -24,7 +24,7 @@ const PostSchema = new Schema({
             }
         }
     ],
-    requests: [
+    Requests: [
         {
             user: {
                 type: Schema.Types.ObjectId,
