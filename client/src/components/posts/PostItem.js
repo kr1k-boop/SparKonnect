@@ -3,9 +3,9 @@ import propTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import Moment from 'react-moment'
 import {connect} from 'react-redux'
-import {addLike, removeLike, deletePost} from '../../actions/post'
+import {addLike, removeLike, deletePost,Requests,removeRequest} from '../../actions/post'
 
-const PostItem = ({ deletePost, addLike, removeLike, auth, post: {_id, text, name, avatar, user, likes, comments, date}, showActions}) => {
+const PostItem = ({ deletePost, addLike, removeLike,Requests,removeRequest, auth, post: {_id, text, name, avatar, user, likes, comments, date}, showActions}) => {
     return (
         <div class="post bg-white p-1 my-1">
           <div>
@@ -33,6 +33,15 @@ const PostItem = ({ deletePost, addLike, removeLike, auth, post: {_id, text, nam
             </button>
             <button onClick= {e => removeLike(_id)} type="button" class="btn btn-light">
               <i class="fas fa-thumbs-down"></i>
+            </button>
+<button onClick= {e => Requests(_id)} type="button" class="btn btn-light">
+              <i class="fa fa-hand-o-right"/>{' '}
+            <span>{likes.length > 0 && (
+                  <span> {likes.length} </span>
+              )} </span>
+            </button>
+            <button onClick= {e => removeRequest(_id)} type="button" class="btn btn-light">
+              <i class="fa fa-minus-square"></i>
             </button>
             <Link to={`/posts/${_id}`} class="btn btn-primary">
               Discussion {comments.length > 0 && (
@@ -62,7 +71,9 @@ PostItem.propTypes = {
     auth: propTypes.object.isRequired,
     addLike: propTypes.func.isRequired,
     removeLike: propTypes.func.isRequired,
-    deletePost: propTypes.func.isRequired
+    deletePost: propTypes.func.isRequired,
+    Requests: propTypes.func.isRequired,
+    removeRequest: propTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
