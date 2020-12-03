@@ -70,6 +70,48 @@ router.get('/:id', auth, async (req, res) => {
     }
 });
 
+router.put('/request/:id',auth,async(req,res)=>{
+    try {
+        const post=await Post.findById(req.params.id);
+
+        //Check if the post has already been liked
+        if(post.requests.filter(request=>request.user.toString()===req.user.id).length>0){
+            return res.status(400).json({msg:'Already requested'});
+        }
+        post.requests.unshift({user:req.user.id});
+        await post.save();
+
+        res.json(post.requests);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+        
+    }
+});
+
+router.put('/remove/:id',auth,async(req,res)=>{
+    try {
+        const post=await Post.findById(req.params.id);
+
+        //Check if the post has already been liked
+        if(post.requests.filter(request=>request.user.toString()===req.user.id).length==0){
+            return res.status(400).json({msg:'Request has not yet been sent'});
+        }
+        //Get the remove index
+        const removeIndex=post.requests.map(request=>request.user.toString()).indexOf(req.user.id);
+        post.requests.splice(removeIndex,1);
+        await post.save();
+
+        res.json(post.requests);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+        
+    }
+});
+
 //@route DELETE api/posts/:id
 //@desc  delete a post 
 //@access Private
