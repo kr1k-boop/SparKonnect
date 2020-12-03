@@ -174,7 +174,7 @@ export const removeRequest = id => async dispatch => {
         const res = await axios.put(`/api/posts/remove/${id}`);
         dispatch({
             type: UPDATE_REQUEST,
-            payload: {id , Requests: res.data.requests }
+            payload: {id , Requests: res.data.Requests }
         })
     } catch (err) {
         dispatch({
