@@ -8,7 +8,8 @@ import {
     POST_ERROR,
     UPDATE_LIKES,
     ADD_COMMENT,
-    REMOVE_COMMENT
+    REMOVE_COMMENT,
+    UPDATE_REQUEST
 } from './types'
 
 //get posts
@@ -152,4 +153,35 @@ export const deleteComment = (postId, commentId) => async dispatch => {
         })
     }
 }
+//Request for colab
+export const Requests = id => async dispatch => {
+    try {
+        const res = await axios.put(`/api/posts/request/${id}`);
+        dispatch({
+            type: UPDATE_REQUEST,
+            payload: { id, requests: res.data}
+        })
+    } catch (err) {
+        dispatch({
+            type: POST_ERROR,
+            payload: {msg: err.response.statusText, status: err.response.status}
+        })
+    }
+}
+
+export const removeRequest = id => async dispatch => {
+    try {
+        const res = await axios.put(`/api/posts/remove/${id}`);
+        dispatch({
+            type: UPDATE_REQUEST,
+            payload: {id , requests: res.data.requests }
+        })
+    } catch (err) {
+        dispatch({
+            type: POST_ERROR,
+            payload: {msg: err.response.statusText, status: err.response.status}
+        })
+    }
+}
+
 
