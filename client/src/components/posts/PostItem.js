@@ -5,7 +5,7 @@ import Moment from 'react-moment'
 import {connect} from 'react-redux'
 import {addLike, removeLike, deletePost,Requests,removeRequest} from '../../actions/post'
 
-const PostItem = ({ deletePost, addLike, removeLike,Requests,removeRequest, auth, post: {_id, text, name, avatar, user, likes, comments, date}, showActions}) => {
+const PostItem = ({ deletePost, addLike, removeLike,addrequest,rrequest, auth, post: {_id, text, name, avatar, user, likes,Requests,comments, date}, showActions}) => {
     return (
         <div class="post bg-white p-1 my-1">
           <div>
@@ -34,13 +34,13 @@ const PostItem = ({ deletePost, addLike, removeLike,Requests,removeRequest, auth
             <button onClick= {e => removeLike(_id)} type="button" class="btn btn-light">
               <i class="fas fa-thumbs-down"></i>
             </button>
-<button onClick= {e => Requests(_id)} type="button" class="btn btn-light">
+<button onClick= {e => addrequest(_id)} type="button" class="btn btn-light">
               <i class="fa fa-hand-o-right"/>{' '}
             <span>{Requests.length > 0 && (
                   <span> {Requests.length} </span>
               )} </span>
             </button>
-            <button onClick= {e => removeRequest(_id)} type="button" class="btn btn-light">
+            <button onClick= {e => rrequest(_id)} type="button" class="btn btn-light">
               <i class="fa fa-minus-square"></i>
             </button>
             <Link to={`/posts/${_id}`} class="btn btn-primary">
@@ -72,12 +72,12 @@ PostItem.propTypes = {
     addLike: propTypes.func.isRequired,
     removeLike: propTypes.func.isRequired,
     deletePost: propTypes.func.isRequired,
-    Requests: propTypes.func.isRequired,
-    removeRequest: propTypes.func.isRequired,
+    addrequest: propTypes.func.isRequired,
+    rrequest: propTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, {addLike, removeLike, deletePost}) (PostItem)
+export default connect(mapStateToProps, {addLike, removeLike, deletePost,addrequest,rrequest}) (PostItem)
