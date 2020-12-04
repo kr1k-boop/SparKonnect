@@ -3,7 +3,7 @@ import propTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import Moment from 'react-moment'
 import {connect} from 'react-redux'
-import {addLike, removeLike, deletePost,Requests,removeRequest} from '../../actions/post'
+import {addLike, removeLike, deletePost,addrequest,rrequest} from '../../actions/post'
 
 const PostItem = ({ deletePost, addLike, removeLike,addrequest,rrequest, auth, post: {_id, text, name, avatar, user, likes,Requests,comments, date}, showActions}) => {
     return (
