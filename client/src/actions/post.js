@@ -154,7 +154,8 @@ export const deleteComment = (postId, commentId) => async dispatch => {
     }
 }
 //Request for colab
-export const Requests = id => async dispatch => {
+
+    export const addrequest = id => async dispatch => {
     try {
         const res = await axios.put(`/api/posts/request/${id}`);
         dispatch({
@@ -168,8 +169,8 @@ export const Requests = id => async dispatch => {
         })
     }
 }
-
-export const removeRequest = id => async dispatch => {
+//Remove Request
+    export const rrequest = id => async dispatch => {
     try {
         const res = await axios.put(`/api/posts/remove/${id}`);
         dispatch({
