@@ -59,7 +59,7 @@ export default function(state = initialState, action) {
         case UPDATE_REQUEST:
             return {
                 ...state,
-                posts: state.posts.map(post => post._id === payload.id ? {...post, requests: payload.requests} : post ),
+                posts: state.posts.map(post => post._id === payload.id ? {...post, Requests: payload.Requests} : post ),
                 loading: false 
             }
         case ADD_COMMENT:
