@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import propTypes from 'prop-types';
 import {logout} from '../../actions/auth';
+import logo from '../../img/logo2.png'
 
 export const Navbar = ({ auth: {isAuthenticated, loading}, logout}) => {
   const authLinks = (
@@ -43,7 +44,9 @@ export const Navbar = ({ auth: {isAuthenticated, loading}, logout}) => {
         <nav className="navbar bg-dark">
       <h1>
           <Link to='/'>
-           # SparKonnect
+            <div style = {{display : "inline-block"}}>
+           <img style = {{width:40, display : "inline-block"}} src = {logo}/> SparKonnect
+           </div>
         </Link>
       </h1>
   {!loading && (<Fragment>{isAuthenticated ? authLinks : guestLinks }</Fragment>)}
