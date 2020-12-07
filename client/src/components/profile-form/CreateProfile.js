@@ -56,10 +56,7 @@ const CreateProfile = ({createProfile, history}) => {
         <div className="form-group">
           <select name="status" value={status} onChange={onChange}>
             <option value="0">* Select Professional Status</option>
-            <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
-            <option value="Manager">Manager</option>
+            <option value="Developer">Professional</option>
             <option value="Student or Learning">Student or Learning</option>
             <option value="Instructor">Instructor or Teacher</option>
             <option value="Intern">Intern</option>
@@ -71,7 +68,7 @@ const CreateProfile = ({createProfile, history}) => {
         <div className="form-group">
           <input type="text" placeholder="Company" name="company" value={company} onChange = {onChange} />
           <small className="form-text"
-            >Could be your own company or one you work for</small>
+            >Could be your own company or the one you work for</small>
         </div>
         <div className="form-group">
           <input type="text" placeholder="Website" name="website" value={website} onChange = {onChange}/>
@@ -79,11 +76,11 @@ const CreateProfile = ({createProfile, history}) => {
         </div>
         <div className="form-group">
           <input type="text" placeholder="Location" name="location" value={location} onChange = {onChange} />
-          <small className="form-text">City & state suggested (eg. Boston, MA)</small>
+          <small className="form-text">City & country recommended (eg. Bangalore, India)</small>
         </div>
         <div className="form-group">
           <input type="text" placeholder="* Skills" name="skills" value={skills} onChange = {onChange} />
-          <small className="form-text">Please use comma separated values (eg.HTML,CSS,JavaScript,PHP)</small>
+          <small className="form-text">Please use comma separated values (eg.Web Development, Graphic Design, Literature, Machine Learning)</small>
         </div>
         <div className="form-group">
           <input
@@ -133,7 +130,7 @@ const CreateProfile = ({createProfile, history}) => {
             </Fragment>)}
         
         <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashbaord">Go Back</Link>
+        <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
       </form>  
       </Fragment>
     );

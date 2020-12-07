@@ -28,7 +28,7 @@ const Dashboard = ({getCurrentProfile, deleteAccount, auth : {user}, profile: {p
                 </button>
             </div>
         </Fragment> : (<Fragment>
-            <p>You have not yet setup a profile, please add some info</p>
+            <p>You don't have a profile yet, let's change that!</p>
             <Link to='/create-profile' className="btn btn-primary my-1">
                 Create Profile
             </Link>
